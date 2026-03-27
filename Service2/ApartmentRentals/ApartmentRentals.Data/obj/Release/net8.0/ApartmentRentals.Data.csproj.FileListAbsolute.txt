@@ -1,0 +1,13 @@
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\bin\Release\net8.0\ApartmentRentals.Data.deps.json
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\bin\Release\net8.0\ApartmentRentals.Data.dll
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\bin\Release\net8.0\ApartmentRentals.Data.pdb
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.csproj.AssemblyReference.cache
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.AssemblyInfoInputs.cache
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.AssemblyInfo.cs
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.csproj.CoreCompileInputs.cache
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.sourcelink.json
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.dll
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\refint\ApartmentRentals.Data.dll
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ApartmentRentals.Data.pdb
+D:\Пгу\Сервисы\Monitoring\Service2\ApartmentRentals\ApartmentRentals.Data\obj\Release\net8.0\ref\ApartmentRentals.Data.dll
