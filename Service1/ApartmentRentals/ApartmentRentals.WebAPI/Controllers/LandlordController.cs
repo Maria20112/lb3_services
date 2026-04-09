@@ -1,34 +1,40 @@
 ﻿using ApartmentRentals.Data.DTOs;
 using ApartmentRentals.Data.Models;
+using ApartmentRentals.WebAPI.Services.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using SpaceStoreApi.Services;
 
 [Route("api/[controller]")]
 [ApiController]
 public class LandlordController : ControllerBase
 {
-    //private readonly IRepository<Landlord> _repository;
-    private readonly LandlordService _landlordService;
+    private readonly IRepository<Landlord> _landlordService;
     private readonly IMapper _mapper;
 
-    public LandlordController(LandlordService landlordService, IMapper mapper)
+    public LandlordController(IRepository<Landlord> landlordService, IMapper mapper)
     {
-        //_repository = repository;
         _landlordService = landlordService;
         _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<LandlordDTO>>> GetAllAsync()
+    public async Task<ActionResult<List<Landlord>>> GetAllAsync() => (await _landlordService.GetAllAsync()).ToList();
+
+    [HttpGet("filter")]
+    public async Task<IActionResult> GetFilteredByPropertyAsync([FromQuery] string propertyName, [FromQuery] string value)
     {
-        var l = await _landlordService.GetAllAsync();
-        var lDTO = _mapper.Map<IEnumerable<LandlordDTO>>(l);
-        return lDTO.ToList();
+        try
+        {
+            return Ok(await _landlordService.GetFilteredByPropertyAsync(propertyName, value));
+        }
+        catch (PropertyFilterException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<LandlordDTO>> GetAsync(string id)
+    public async Task<ActionResult<Landlord>> GetAsync(string id)
     {
         var landlord = await _landlordService.GetByIdAsync(id);
 
@@ -48,32 +54,15 @@ public class LandlordController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateAsync(string id, LandlordNoIdDTO dto)
-    {
-        var landlord = _mapper.Map<Landlord>(dto);
-        landlord.Id = id;
-
-        var success = await _landlordService.UpdateAsync(id, landlord);
-
-        return success ? NoContent() : NotFound();
-    }
+    public async Task<IActionResult> UpdateAsync(string id, LandlordNoIdDTO dto) => 
+        await _landlordService.UpdateAsync(id, _mapper.Map<Landlord>(dto)) ? NoContent() : NotFound();
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
-    {
-        var success = await _landlordService.DeleteByIdAsync(id);
-
-        return success ? NoContent() : NotFound();
-    }
+    public async Task<IActionResult> Delete(string id) => await _landlordService.DeleteByIdAsync(id) ? NoContent() : NotFound();
 
     [HttpDelete]
     public async Task<IActionResult> DeleteAll()
     {
-        /*var tenants = await _tenantService.GetAllAsync();
-        foreach (var tenant in tenants)
-        {
-            await _tenantService.DeleteAsync(tenant.Id);
-        }*/
         await _landlordService.DeleteAllAsync();
         return Ok();
     }

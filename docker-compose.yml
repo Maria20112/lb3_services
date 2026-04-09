@@ -10,10 +10,19 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__MongoDB=mongodb://mongodb:27017/ApartmentRentals
+      - RedisCache__Configuration=redis:6379,abortConnect=False
+      - RedisCache__InstanceName=ApartmentRentals
     networks:
       - monitoring-network
     labels:
       - "app.name=service1"
+    depends_on:
+      # mongodb:
+      #   condition: service_started
+      # redis:
+      #   condition: service_healthy
+      - mongodb
+      - redis
 
   # Второе приложение
   service2:
@@ -25,25 +34,36 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__MongoDB=mongodb://mongodb:27017/ApartmentRentals
+      - RedisCache__Configuration=redis:6379,abortConnect=False
+      - RedisCache__InstanceName=ApartmentRentals
     networks:
       - monitoring-network
     labels:
       - "app.name=service2"
+    depends_on:
+      # mongodb:
+      #   condition: service_started
+      # redis:
+      #   condition: service_healthy
+      - mongodb
+      - redis
 
+#DB
   mongodb:
     image: mongo:7.0
     container_name: mongodb
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data:/data/db        # 🔧 было: mongo-data (дефис → подчёркивание)
+      - mongo_data:/data/db        
     networks:
-      - monitoring-network          # 🔧 было: app-network
+      - monitoring-network          
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
       interval: 10s
       timeout: 5s
       retries: 5
+
   # Prometheus
   prometheus:
     image: prom/prometheus:latest
@@ -71,7 +91,7 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+      #- GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
@@ -79,6 +99,48 @@ services:
       - monitoring-network
     depends_on:
       - prometheus
+
+  #Cache
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    #command: redis-server --bind 0.0.0.0 --protected-mode no
+    # environment:
+    #   - REDIS_PASSWORD=${REDIS_PASSWORD}
+    #   - REDIS_USER=${REDIS_USER}
+    #   - REDIS_USER_PASSWORD=${REDIS_USER_PASSWORD}
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redisdata:/data
+    networks:
+      - monitoring-network  
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    # command: >
+    #   sh -c '
+    #     mkdir -p /usr/local/etc/redis &&
+    #     echo "bind 0.0.0.0" > /usr/local/etc/redis/redis.conf &&
+    #     echo "requirepass $REDIS_PASSWORD" >> /usr/local/etc/redis/redis.conf &&
+    #     echo "appendonly yes" >> /usr/local/etc/redis/redis.conf &&
+    #     echo "appendfsync everysec" >> /usr/local/etc/redis/redis.conf &&
+    #     echo "user default on nopass ~* +@all" > /usr/local/etc/redis/users.acl &&
+    #     echo "user $REDIS_USER on >$REDIS_USER_PASSWORD ~* +@all" >> /usr/local/etc/redis/users.acl &&
+    #     redis-server /usr/local/etc/redis/redis.conf --aclfile /usr/local/etc/redis/users.acl
+    #   '
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      #start_period: 10s
+    restart: unless-stopped
 
 networks:
   monitoring-network:

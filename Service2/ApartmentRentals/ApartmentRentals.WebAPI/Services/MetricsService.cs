@@ -1,4 +1,4 @@
-public class MetricsUpdateService : BackgroundService
+﻿public class MetricsUpdateService : BackgroundService
 {
     private readonly TimeSpan _updateInterval = TimeSpan.FromSeconds(30);
 

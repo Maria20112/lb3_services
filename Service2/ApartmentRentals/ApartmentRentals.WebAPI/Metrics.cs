@@ -1,9 +1,9 @@
-using Prometheus;
+﻿using Prometheus;
 
 public static class UptimeMetrics
 {
     // Gauge хранит значение, которое может расти и уменьшаться
-    private static readonly Gauge UptimeGauge = Metrics.CreateGauge(
+    private static readonly Prometheus.Gauge UptimeGauge = Metrics.CreateGauge(
         "uptime_app_seconds",
         "Application uptime in seconds"
     );

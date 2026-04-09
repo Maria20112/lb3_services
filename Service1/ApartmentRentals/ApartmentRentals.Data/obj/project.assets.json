@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "AutoMapper/16.1.0": {
+      "AutoMapper/16.1.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
@@ -154,7 +154,7 @@
           }
         }
       },
-      "MongoDB.Bson/3.7.0": {
+      "MongoDB.Bson/3.7.1": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -212,16 +212,16 @@
     }
   },
   "libraries": {
-    "AutoMapper/16.1.0": {
-      "sha512": "dslB2z3keOkRdo5N1sWUhTv+37ZXKm2tsJOcUPVOi+Kf1CxkcVsGwH5MeLDKyR+T8WPKwiPq2yhDPMkCfPK16w==",
+    "AutoMapper/16.1.1": {
+      "sha512": "VNEky8JA15ci+oIDRGHITOGOpV4dILsf8pnn24QhDl2urtqgJ2IXiS/V2EtGU17P/+f6OeFQPJETaZXV9QOIZg==",
       "type": "package",
-      "path": "automapper/16.1.0",
+      "path": "automapper/16.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "README.md",
-        "automapper.16.1.0.nupkg.sha512",
+        "automapper.16.1.1.nupkg.sha512",
         "automapper.nuspec",
         "icon.png",
         "lib/net10.0/AutoMapper.dll",
@@ -510,10 +510,10 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "MongoDB.Bson/3.7.0": {
-      "sha512": "u8f0UAYe2/LWdvLEwwIjkCd2Rx6vBo6Yab+i+D4B3E0AvK1ndzIsIHuGBCeYeg5r8+/V+m1TXLonlhwT9Vfdrg==",
+    "MongoDB.Bson/3.7.1": {
+      "sha512": "ZhCFCN64iZNaV6TDVNpjQ6p8M8tQvLda6ABbfrqd6XEZ3qn0pwwDJi6+DZ3xySadUwGzKR0CV3IzmHEWe/wI4Q==",
       "type": "package",
-      "path": "mongodb.bson/3.7.0",
+      "path": "mongodb.bson/3.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -524,7 +524,7 @@
         "lib/net6.0/MongoDB.Bson.xml",
         "lib/netstandard2.1/MongoDB.Bson.dll",
         "lib/netstandard2.1/MongoDB.Bson.xml",
-        "mongodb.bson.3.7.0.nupkg.sha512",
+        "mongodb.bson.3.7.1.nupkg.sha512",
         "mongodb.bson.nuspec",
         "packageIcon.png"
       ]
@@ -615,28 +615,28 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "AutoMapper >= 16.1.0",
-      "MongoDB.Bson >= 3.7.0"
+      "AutoMapper >= 16.1.1",
+      "MongoDB.Bson >= 3.7.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Мария\\.nuget\\packages\\": {},
+    "C:\\Users\\Nadezhda_N\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Пгу\\Сервисы\\Monitoring\\Service1\\ApartmentRentals\\ApartmentRentals.Data\\ApartmentRentals.Data.csproj",
+      "projectUniqueName": "C:\\Nadezhda\\Study\\Labs\\MicroService\\ApartmentRentalsDocker\\ApartmentRentals\\ApartmentRentals.Data\\ApartmentRentals.Data.csproj",
       "projectName": "ApartmentRentals.Data",
-      "projectPath": "D:\\Пгу\\Сервисы\\Monitoring\\Service1\\ApartmentRentals\\ApartmentRentals.Data\\ApartmentRentals.Data.csproj",
-      "packagesPath": "C:\\Users\\Мария\\.nuget\\packages\\",
-      "outputPath": "D:\\Пгу\\Сервисы\\Monitoring\\Service1\\ApartmentRentals\\ApartmentRentals.Data\\obj\\",
+      "projectPath": "C:\\Nadezhda\\Study\\Labs\\MicroService\\ApartmentRentalsDocker\\ApartmentRentals\\ApartmentRentals.Data\\ApartmentRentals.Data.csproj",
+      "packagesPath": "C:\\Users\\Nadezhda_N\\.nuget\\packages\\",
+      "outputPath": "C:\\Nadezhda\\Study\\Labs\\MicroService\\ApartmentRentalsDocker\\ApartmentRentals\\ApartmentRentals.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Мария\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nadezhda_N\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -645,6 +645,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -662,7 +663,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -670,11 +672,11 @@
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
-            "version": "[16.1.0, )"
+            "version": "[16.1.1, )"
           },
           "MongoDB.Bson": {
             "target": "Package",
-            "version": "[3.7.0, )"
+            "version": "[3.7.1, )"
           }
         },
         "imports": [
@@ -693,20 +695,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "У пакета \"AutoMapper\" 16.1.0 есть известная уязвимость https://github.com/advisories/GHSA-rvv3-g6hj-g44x (уровень серьезности: высокий уровень)",
-      "libraryId": "AutoMapper",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }
